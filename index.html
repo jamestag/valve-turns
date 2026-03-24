@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -18,7 +18,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 16px;
+      padding: 20px 16px 40px;
       user-select: none;
     }
 
@@ -27,7 +27,7 @@
       font-weight: 600;
       letter-spacing: 0.05em;
       color: #a0aec0;
-      margin-bottom: 6px;
+      margin-bottom: 14px;
       text-transform: uppercase;
     }
 
@@ -40,11 +40,7 @@
       max-width: 360px;
       margin-bottom: 20px;
     }
-    .valve-row label {
-      font-size: 14px;
-      color: #a0aec0;
-      white-space: nowrap;
-    }
+    .valve-row label { font-size: 14px; color: #a0aec0; white-space: nowrap; }
     .valve-row input {
       flex: 1;
       background: #2d2d4e;
@@ -67,7 +63,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       border: 1px solid #2d2d4e;
     }
 
@@ -80,13 +76,7 @@
       transition: color 0.3s;
     }
     .turn-number.active { color: #68d391; }
-
-    .turn-label {
-      font-size: 14px;
-      color: #718096;
-      margin-top: 4px;
-      margin-bottom: 16px;
-    }
+    .turn-label { font-size: 14px; color: #718096; margin-top: 4px; margin-bottom: 16px; }
 
     /* Direction badge */
     .direction {
@@ -99,32 +89,14 @@
       transition: all 0.3s;
       margin-bottom: 12px;
     }
-    .direction.opening { background: #1c4532; color: #68d391; }
-    .direction.closing { background: #4a1942; color: #f687b3; }
+    .direction.ccw { background: #1c4532; color: #68d391; }
+    .direction.cw  { background: #4a1942; color: #f687b3; }
 
-    /* Partial turn arc indicator */
-    .partial-wrap {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
+    /* Partial turn bar */
+    .partial-wrap { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .partial-label { font-size: 12px; color: #4a5568; }
-    .partial-bar {
-      width: 100%;
-      height: 6px;
-      background: #2d2d4e;
-      border-radius: 3px;
-      overflow: hidden;
-    }
-    .partial-fill {
-      height: 100%;
-      width: 0%;
-      background: #63b3ed;
-      border-radius: 3px;
-      transition: width 0.1s;
-    }
+    .partial-bar { width: 100%; height: 6px; background: #2d2d4e; border-radius: 3px; overflow: hidden; }
+    .partial-fill { height: 100%; width: 0%; background: #63b3ed; border-radius: 3px; transition: width 0.1s; }
 
     /* Buttons */
     .btn-row {
@@ -132,9 +104,8 @@
       gap: 12px;
       width: 100%;
       max-width: 360px;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
-
     button {
       flex: 1;
       padding: 16px 8px;
@@ -144,31 +115,17 @@
       font-weight: 600;
       cursor: pointer;
       transition: transform 0.1s, opacity 0.2s;
-      -webkit-tap-highlight-color: transparent;
     }
     button:active { transform: scale(0.96); }
+    button:disabled { opacity: 0.4; }
 
-    #btn-start {
-      background: #2f855a;
-      color: #ffffff;
-      flex: 2;
-    }
+    #btn-start { background: #2f855a; color: #fff; flex: 2; }
     #btn-start.running { background: #c53030; }
-    #btn-reset {
-      background: #2d2d4e;
-      color: #a0aec0;
-      flex: 1;
-    }
+    #btn-reset { background: #2d2d4e; color: #a0aec0; flex: 1; }
 
-    /* Status bar */
-    .status {
-      font-size: 13px;
-      color: #718096;
-      margin-bottom: 20px;
-      height: 18px;
-      text-align: center;
-    }
-    .status.ok { color: #68d391; }
+    /* Status */
+    .status { font-size: 13px; color: #718096; margin-bottom: 16px; height: 18px; text-align: center; }
+    .status.ok  { color: #68d391; }
     .status.err { color: #fc8181; }
 
     /* Permission button */
@@ -178,15 +135,27 @@
       width: 100%;
       max-width: 360px;
       padding: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       display: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Mount note */
+    .mount-note {
+      font-size: 12px;
+      color: #4a5568;
+      text-align: center;
+      max-width: 300px;
+      margin-bottom: 24px;
+      line-height: 1.6;
     }
 
     /* Log */
-    .log-section {
-      width: 100%;
-      max-width: 360px;
-    }
+    .log-section { width: 100%; max-width: 360px; }
     .log-header {
       display: flex;
       justify-content: space-between;
@@ -194,21 +163,23 @@
       margin-bottom: 8px;
     }
     .log-header span { font-size: 13px; color: #718096; }
-    .log-header button {
+    .log-actions { display: flex; gap: 8px; }
+    .log-actions button {
       flex: none;
       width: auto;
-      padding: 4px 12px;
+      padding: 5px 12px;
       font-size: 12px;
-      background: #2d2d4e;
-      color: #a0aec0;
       border-radius: 6px;
+      font-weight: 500;
     }
+    #btn-export { background: #2d2d4e; color: #a0aec0; }
+    #btn-clear  { background: #4a1942; color: #f687b3; }
 
     .log-list {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      max-height: 260px;
+      max-height: 300px;
       overflow-y: auto;
     }
     .log-item {
@@ -222,22 +193,42 @@
       gap: 2px 8px;
       align-items: center;
     }
-    .log-valve { font-weight: 600; color: #e2e8f0; }
-    .log-turns { font-size: 18px; font-weight: 700; color: #63b3ed; text-align: right; }
-    .log-dir { font-size: 11px; color: #718096; }
-    .log-time { font-size: 11px; color: #4a5568; text-align: right; }
+    .log-valve  { font-weight: 600; color: #e2e8f0; }
+    .log-turns  { font-size: 18px; font-weight: 700; color: #63b3ed; text-align: right; }
+    .log-dir    { font-size: 11px; color: #718096; }
+    .log-time   { font-size: 11px; color: #4a5568; text-align: right; }
+    .log-dir.ccw { color: #68d391; }
+    .log-dir.cw  { color: #f687b3; }
 
     .empty-log { font-size: 13px; color: #4a5568; text-align: center; padding: 20px 0; }
 
-    /* Mount reminder */
-    .mount-note {
-      font-size: 12px;
-      color: #4a5568;
-      text-align: center;
-      max-width: 300px;
-      margin-bottom: 20px;
-      line-height: 1.6;
+    /* Confirm overlay */
+    .overlay {
+      display: none;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      min-height: 100vh;
     }
+    .overlay.visible { display: flex; }
+    .confirm-box {
+      background: #16213e;
+      border: 1px solid #4a4a7a;
+      border-radius: 16px;
+      padding: 24px 20px;
+      max-width: 280px;
+      width: 90%;
+      text-align: center;
+    }
+    .confirm-box p { font-size: 15px; color: #e2e8f0; margin-bottom: 8px; font-weight: 600; }
+    .confirm-box small { font-size: 13px; color: #718096; display: block; margin-bottom: 20px; }
+    .confirm-btns { display: flex; gap: 10px; }
+    .confirm-btns button { flex: 1; padding: 12px; font-size: 15px; border-radius: 10px; }
+    #btn-confirm-yes { background: #c53030; color: #fff; }
+    #btn-confirm-no  { background: #2d2d4e; color: #a0aec0; }
   </style>
 </head>
 <body>
@@ -246,7 +237,8 @@
 
   <div class="valve-row">
     <label>Valve ID</label>
-    <input type="text" id="valve-id" placeholder="e.g. V-204" autocomplete="off" autocorrect="off" spellcheck="false">
+    <input type="text" id="valve-id" placeholder="e.g. V-204"
+           autocomplete="off" autocorrect="off" spellcheck="false">
   </div>
 
   <div class="turn-display">
@@ -271,43 +263,72 @@
   </div>
 
   <p class="mount-note">
-    Mount phone along the valve key's long axis.<br>
-    Keep the phone steady — do not hold it in your hand.
+    Mount phone flat along the valve key handle.<br>
+    Screen facing up. Keep it secure — do not hold it.
   </p>
 
   <div class="log-section">
     <div class="log-header">
-      <span>Operation log</span>
-      <button onclick="exportLog()">Export</button>
+      <span id="log-count">Operation log (0)</span>
+      <div class="log-actions">
+        <button id="btn-export" onclick="exportLog()">Export CSV</button>
+        <button id="btn-clear"  onclick="confirmClear()">Clear</button>
+      </div>
     </div>
     <div class="log-list" id="log-list">
       <div class="empty-log">No operations logged yet</div>
     </div>
   </div>
 
+  <!-- Clear confirmation overlay -->
+  <div class="overlay" id="overlay">
+    <div class="confirm-box">
+      <p>Clear all log entries?</p>
+      <small>This cannot be undone. Export first if you need the data.</small>
+      <div class="confirm-btns">
+        <button id="btn-confirm-yes" onclick="clearLog()">Yes, clear</button>
+        <button id="btn-confirm-no"  onclick="dismissOverlay()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // ── Constants ──────────────────────────────────────────────────────────
+    const NOISE_FLOOR  = 0.008;   // radians — ignores micro-tremor
+    const STORAGE_KEY  = 'valveturns_log_v1';
+
     // ── State ──────────────────────────────────────────────────────────────
-    let running       = false;
-    let totalTurns    = 0;      // cumulative signed turns
-    let lastYaw       = null;   // previous yaw reading (radians)
-    let sessionStart  = null;
-    let log           = [];
-    let motionHandler = null;
+    let running          = false;
+    let totalTurns       = 0;
+    let lastYaw          = null;
+    let sessionStart     = null;
+    let motionHandler    = null;
     let permissionGranted = false;
+    let log              = [];
 
-    // Smoothing — small rotation changes below this threshold are ignored
-    // to suppress sensor noise while the phone is stationary.
-    const NOISE_FLOOR = 0.008; // radians (~0.46 degrees)
+    // ── Persist log in localStorage ────────────────────────────────────────
+    // Survives page refresh, Safari closing, phone restarts.
+    // Cleared only when user taps Clear or clears Safari site data.
+    function loadLog() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) log = JSON.parse(saved);
+      } catch (_) { log = []; }
+      renderLog();
+    }
 
-    // ── Sensor permission (required by Safari iOS 13+) ─────────────────────
+    function saveLog() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(log)); }
+      catch (_) { setStatus('Storage full — export and clear log', false); }
+    }
+
+    // ── Permission ─────────────────────────────────────────────────────────
     function checkPermission() {
       if (typeof DeviceOrientationEvent !== 'undefined' &&
           typeof DeviceOrientationEvent.requestPermission === 'function') {
-        // iOS 13+ — must request explicitly
         document.getElementById('btn-permission').style.display = 'block';
         setStatus('Tap the blue button to allow motion access', false);
       } else {
-        // Android / older iOS — permission not needed
         permissionGranted = true;
       }
     }
@@ -319,16 +340,15 @@
           document.getElementById('btn-permission').style.display = 'none';
           setStatus('Motion access granted — tap Start', true);
         } else {
-          setStatus('Motion access denied — check Settings', false);
+          setStatus('Motion access denied — check Settings › Safari', false);
         }
-      }).catch(() => {
-        setStatus('Permission request failed', false);
-      });
+      }).catch(() => setStatus('Permission request failed', false));
     }
 
-    // ── Session control ────────────────────────────────────────────────────
+    // ── Session ────────────────────────────────────────────────────────────
     function toggleSession() {
-      if (!permissionGranted && typeof DeviceOrientationEvent.requestPermission === 'function') {
+      if (!permissionGranted &&
+          typeof DeviceOrientationEvent.requestPermission === 'function') {
         setStatus('Tap "Allow Motion Sensor Access" first', false);
         return;
       }
@@ -348,7 +368,6 @@
       setStatus('Recording…', true);
       updateDisplay();
 
-      // Use DeviceOrientation for yaw (compass heading from sensor fusion)
       motionHandler = (e) => handleOrientation(e);
       window.addEventListener('deviceorientation', motionHandler, true);
     }
@@ -362,16 +381,23 @@
       document.getElementById('btn-start').classList.remove('running');
       document.getElementById('turn-count').classList.remove('active');
       document.getElementById('btn-reset').disabled = false;
-      setStatus('Session stopped — tap Start for new valve', false);
+      setStatus('Session stopped — tap Start for next valve', false);
 
-      // Log the completed operation
-      const valveId = document.getElementById('valve-id').value.trim() || 'Unknown';
-      const turns   = parseFloat(totalTurns.toFixed(1));
-      const dir     = turns >= 0 ? 'Opening' : 'Closing';
-      const absTurns = Math.abs(turns);
+      const valveId  = document.getElementById('valve-id').value.trim() || 'Unknown';
+      const turns    = parseFloat(Math.abs(totalTurns).toFixed(1));
+      const dir      = totalTurns >= 0 ? 'CCW' : 'CW';
 
-      if (absTurns >= 0.1) {
-        addLogEntry(valveId, absTurns, dir, sessionStart);
+      if (turns >= 0.1) {
+        const entry = {
+          valveId,
+          turns,
+          dir,
+          time: sessionStart.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          date: sessionStart.toLocaleDateString()
+        };
+        log.unshift(entry);  // newest first
+        saveLog();
+        renderLog();
       }
     }
 
@@ -383,118 +409,111 @@
       setStatus('Reset — tap Start to begin', false);
     }
 
-    // ── Sensor processing ──────────────────────────────────────────────────
+    // ── Sensor ─────────────────────────────────────────────────────────────
     function handleOrientation(event) {
-      // alpha = compass heading (0-360 degrees), wraps at 0/360
       if (event.alpha === null) return;
 
-      const yawDeg = event.alpha;            // degrees 0–360
-      const yaw    = yawDeg * Math.PI / 180; // convert to radians
+      const yaw = event.alpha * Math.PI / 180;
 
-      if (lastYaw === null) {
-        lastYaw = yaw;
-        return;
-      }
+      if (lastYaw === null) { lastYaw = yaw; return; }
 
-      // Calculate shortest-path delta between two angles on a circle
       let delta = yaw - lastYaw;
       if (delta >  Math.PI) delta -= 2 * Math.PI;
       if (delta < -Math.PI) delta += 2 * Math.PI;
 
-      // Apply noise floor — ignore tiny tremor/drift
-      if (Math.abs(delta) < NOISE_FLOOR) {
-        return;
-      }
+      if (Math.abs(delta) < NOISE_FLOOR) return;
 
-      // Accumulate: positive = CCW (opening), negative = CW (closing)
-      // Note: convention depends on mounting — operator can flip sign in settings
       totalTurns += delta / (2 * Math.PI);
       lastYaw = yaw;
-
       updateDisplay();
     }
 
     // ── Display ────────────────────────────────────────────────────────────
     function updateDisplay() {
-      const absTurns  = Math.abs(totalTurns);
-      const partial   = (absTurns % 1) * 100; // 0–100%
-      const direction = totalTurns > 0.05 ? 'Opening'
-                      : totalTurns < -0.05 ? 'Closing'
-                      : '—';
+      const absTurns = Math.abs(totalTurns);
+      const partial  = (absTurns % 1) * 100;
 
-      document.getElementById('turn-count').textContent = absTurns.toFixed(1);
+      let dirText  = '—';
+      let dirClass = '';
+      if (totalTurns >  0.05) { dirText = 'Counterclockwise'; dirClass = 'ccw'; }
+      if (totalTurns < -0.05) { dirText = 'Clockwise';        dirClass = 'cw';  }
+
+      document.getElementById('turn-count').textContent  = absTurns.toFixed(1);
       document.getElementById('partial-fill').style.width = partial + '%';
 
       const dirEl = document.getElementById('direction');
-      dirEl.textContent = direction;
-      dirEl.className   = 'direction';
-      if (direction === 'Opening') dirEl.classList.add('opening');
-      if (direction === 'Closing') dirEl.classList.add('closing');
+      dirEl.textContent = dirText;
+      dirEl.className   = 'direction ' + dirClass;
     }
 
-    // ── Log ────────────────────────────────────────────────────────────────
-    function addLogEntry(valveId, turns, direction, startTime) {
-      const entry = {
-        valveId,
-        turns,
-        direction,
-        time: startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        date: startTime.toLocaleDateString()
-      };
-      log.unshift(entry); // newest first
-      renderLog();
-    }
-
+    // ── Log render ─────────────────────────────────────────────────────────
     function renderLog() {
       const list = document.getElementById('log-list');
+      document.getElementById('log-count').textContent =
+        'Operation log (' + log.length + ')';
+
       if (log.length === 0) {
         list.innerHTML = '<div class="empty-log">No operations logged yet</div>';
         return;
       }
+
       list.innerHTML = log.map(e => `
         <div class="log-item">
           <span class="log-valve">${e.valveId}</span>
           <span class="log-turns">${e.turns.toFixed(1)}</span>
-          <span class="log-dir">${e.direction}</span>
+          <span class="log-dir ${e.dir.toLowerCase()}">${e.dir === 'CCW' ? 'Counterclockwise' : 'Clockwise'}</span>
           <span class="log-time">${e.date} ${e.time}</span>
         </div>
       `).join('');
     }
 
+    // ── Clear log ──────────────────────────────────────────────────────────
+    function confirmClear() {
+      document.getElementById('overlay').classList.add('visible');
+    }
+    function dismissOverlay() {
+      document.getElementById('overlay').classList.remove('visible');
+    }
+    function clearLog() {
+      log = [];
+      localStorage.removeItem(STORAGE_KEY);
+      renderLog();
+      dismissOverlay();
+      setStatus('Log cleared', false);
+    }
+
+    // ── Export CSV ─────────────────────────────────────────────────────────
     function exportLog() {
-      if (log.length === 0) {
-        setStatus('No data to export yet', false);
-        return;
-      }
+      if (log.length === 0) { setStatus('No data to export yet', false); return; }
       const header = 'Valve ID,Turns,Direction,Date,Time\n';
       const rows   = log.map(e =>
-        `${e.valveId},${e.turns.toFixed(1)},${e.direction},${e.date},${e.time}`
+        `${e.valveId},${e.turns.toFixed(1)},${e.dir === 'CCW' ? 'Counterclockwise' : 'Clockwise'},${e.date},${e.time}`
       ).join('\n');
       const blob = new Blob([header + rows], { type: 'text/csv' });
       const url  = URL.createObjectURL(blob);
       const a    = document.createElement('a');
       a.href     = url;
-      a.download = 'valve_operations.csv';
+      a.download = 'valve_operations_' + new Date().toISOString().slice(0,10) + '.csv';
       a.click();
       URL.revokeObjectURL(url);
     }
 
+    // ── Status ─────────────────────────────────────────────────────────────
     function setStatus(msg, ok) {
       const el = document.getElementById('status');
-      el.textContent  = msg;
-      el.className    = 'status ' + (ok ? 'ok' : 'err');
+      el.textContent = msg;
+      el.className   = 'status ' + (ok ? 'ok' : 'err');
     }
 
-    // ── Prevent screen sleep (Wake Lock API) ──────────────────────────────
+    // ── Wake lock — keep screen on ─────────────────────────────────────────
     async function requestWakeLock() {
       try {
-        if ('wakeLock' in navigator) {
-          await navigator.wakeLock.request('screen');
-        }
-      } catch (_) { /* not supported — screen may sleep */ }
+        if ('wakeLock' in navigator) await navigator.wakeLock.request('screen');
+      } catch (_) {}
     }
 
     // ── Init ───────────────────────────────────────────────────────────────
+    loadLog();
     checkPermission();
     requestWakeLock();
   </script>
